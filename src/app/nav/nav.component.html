@@ -1,0 +1,202 @@
+
+    <mat-sidenav-container class="nav-container" >
+        
+        <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
+            
+            <mat-toolbar color="primary" >
+
+      
+                    <a mat-button routerLink="/products">
+                        <mat-icon>dashboard icon</mat-icon>
+                        Marketplace
+                    </a>
+        
+                    <a mat-button routerLink="/orders">
+                        <mat-icon>add_shopping_cart</mat-icon>
+                        Your Orders
+                    </a>
+
+                    <h2 class="login-form"></h2>
+
+                    
+                    <a mat-stroked-button color="success" [matMenuTriggerFor]="dropdown" *ngIf="accountService.currentUser$ | async">
+                        Welcome {{model.username}} !
+                    </a>
+
+                    <a mat-button>
+                        <mat-icon>credit_card</mat-icon>
+                        Your Balance: 70$
+                    </a>
+                    
+      
+                    <mat-menu #dropdown>
+                        <button routerLink="home" mat-menu-item (click)="logout()">Logout</button>
+                    </mat-menu>
+                
+                <!--
+                    Here we are using the Async Pipe which gives us the abillity to subscribe to something, The Async pipe
+                    makes angular automatically handle the subscribe/unsubscribe from an observable
+                -->
+                <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" 
+                    autocomplete="off">
+                    <input 
+                        name="username"
+                        [(ngModel)]="model.username"
+                        class="form-control mr-sm-2" 
+                        type="text" 
+                        placeholder="Username">
+                    <input 
+                        name="password"
+                        [(ngModel)]="model.password"
+                        class="form-control mr-sm-2" 
+                        type="password" 
+                        placeholder="Password">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                </form>
+
+            </mat-toolbar>
+        </ul>
+
+        <mat-toolbar class="login-container" color="primary" *ngIf="(accountService.currentUser$ | async) === null">
+            <form #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" 
+            autocomplete="off">
+            <input 
+                name="username"
+                [(ngModel)]="model.username"
+                class="form-control mr-sm-2" 
+                type="text" 
+                placeholder="Username">
+            <input 
+                name="password"
+                [(ngModel)]="model.password"
+                class="form-control mr-sm-2" 
+                type="password" 
+                placeholder="Password">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" routerLink="/products">Login</button>
+        </form>
+        </mat-toolbar>
+
+        <router-outlet></router-outlet>
+        
+</mat-sidenav-container>
+
+
+
+
+<!--
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav>
+
+        <mat-nav-list (click)="sidenav.close()">
+
+            <a mat-list-item routerLink="products">
+                <mat-icon>question_answer</mat-icon>
+                <span>Marketplace</span>
+            </a>
+
+            <a mat-list-item routerLink="orders">
+              <mat-icon>question_answer</mat-icon>
+              <span>Orders</span>
+          </a>
+
+            <a mat-list-item routerLink="login">
+                <mat-icon>account_circle</mat-icon>
+                <span>Login</span>
+            </a>
+
+        </mat-nav-list>
+
+
+    </mat-sidenav>
+
+
+    <mat-toolbar color="primary">
+
+      
+        <button mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+      
+
+      <a mat-button routerLink="/login">
+          <mat-icon>account_circle</mat-icon>
+          Login
+      </a>
+
+      <a mat-button routerLink="/products">
+        <mat-icon>dashboard icon</mat-icon>
+        Marketplace
+    </a>
+
+    <a mat-button routerLink="/orders">
+      <mat-icon>add_shopping_cart</mat-icon>
+      Your Orders
+  </a>
+
+    </mat-toolbar>
+
+
+    <router-outlet></router-outlet>
+
+
+</mat-sidenav-container>
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<mat-sidenav-container fullscreen>
+
+    <mat-sidenav #sidenav>
+
+        <mat-nav-list (click)="sidenav.close()">
+
+            <a mat-list-item routerLink="products">
+                <mat-icon>question_answer</mat-icon>
+                <span>Marketplace</span>
+            </a>
+
+            <a mat-list-item routerLink="orders">
+              <mat-icon>question_answer</mat-icon>
+              <span>Orders</span>
+            </a>
+
+            <a mat-list-item routerLink="login">
+                <mat-icon>account_circle</mat-icon>
+                <span>Login</span>
+            </a>
+
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+-->

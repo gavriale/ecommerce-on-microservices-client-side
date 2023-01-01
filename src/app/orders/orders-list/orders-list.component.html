@@ -1,0 +1,40 @@
+<!--
+<ul>
+    <li *ngFor="let o of orders">
+        {{o.userName}} {{o.price}} {{o.product}}
+    </li>
+  </ul>
+-->
+
+<div class="orders">
+
+    <h2>Your Orders</h2>
+</div>
+
+<mat-table mat-table-class="order-table mat elevation-z8" [dataSource]="orders">
+    
+
+    <ng-container matColumnDef="id" *ngIf="orders">
+      <mat-header-cell *matHeaderCellDef> Order tracking # </mat-header-cell>
+      <mat-cell *matCellDef="let order"> {{order.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="product" *ngIf="orders">
+        <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+        <mat-cell *matCellDef="let order"> {{order.product}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="price" *ngIf="orders">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let order"> {{order.price}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address" *ngIf="orders">
+        <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+        <mat-cell *matCellDef="let order"> {{order.address}} </mat-cell>
+      </ng-container>
+  
+    <!-- Header and Row Declarations -->
+    <mat-header-row *matHeaderRowDef="['id','product','price','address']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id','product','price','address']"></mat-row>
+  </mat-table>

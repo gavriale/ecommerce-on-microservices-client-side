@@ -1,0 +1,82 @@
+
+<mat-card class="course-card mat-elevation-z7" *ngFor="let prod of products">
+
+    <mat-card-header>
+
+        <mat-card-title>{{prod.name}}</mat-card-title>
+
+    </mat-card-header>
+
+
+    <img mat-card-image [src]="prod.imageUrl">
+
+
+    <mat-card-content>
+
+        <p>{{prod.description}}</p>
+
+    </mat-card-content>
+
+
+    <mat-card-actions class="product-actions">
+
+        <button mat-raised-button color="accent" (click)="openDialog(prod)">
+            Order now!
+        </button>
+
+        <button mat-raised-button color="accent" (click)="getProductDetails()">
+            Details
+        </button>
+
+    </mat-card-actions>
+
+</mat-card>
+
+
+<!--
+<mat-grid-list [cols]="cols" [rowHeight]="rowHeight"
+               [ngClass]="{'handset-portrait': handsetPortrait}">
+
+    <mat-grid-tile *ngFor="let prod of products">
+
+        <mat-card class="course-card mat-elevation-z7">
+
+            <mat-card-header>
+
+                <mat-card-title>{{prod.name}}</mat-card-title>
+
+            </mat-card-header>
+
+
+            <img mat-card-image [src]="prod.imageUrl">
+
+
+            <mat-card-content>
+
+                <p>{{prod.description}}</p>
+
+            </mat-card-content>
+
+
+            <mat-card-actions class="product-actions">
+
+                <button mat-raised-button color="accent" (click)="orderProduct(prod)">
+                    Order now!
+                </button>
+
+                <button mat-raised-button color="accent" (click)="getProductDetails()">
+                    Details
+                </button>
+
+            </mat-card-actions>
+
+        </mat-card>
+
+    </mat-grid-tile>
+
+
+</mat-grid-list>
+
+-->
+
+
